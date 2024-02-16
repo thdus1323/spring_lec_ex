@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import shop.mtcoding.blog.user.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BoardResponse {
