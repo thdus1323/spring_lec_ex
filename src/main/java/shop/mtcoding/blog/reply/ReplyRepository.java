@@ -1,6 +1,7 @@
 package shop.mtcoding.blog.reply;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -38,5 +39,26 @@ public class ReplyRepository {
         query.setParameter(3, userId);
 
         query.executeUpdate();
+    }
+
+    @Transactional
+    public void deleteById(int id) {
+        String q= "delete from reply_tb where id = ?";
+        Query query = em.createNativeQuery(q);
+        query.setParameter(1, id);
+
+        query.executeUpdate();
+    }
+
+    public Reply findById(int id){
+        String q = "select * from reply_tb where id = ?";
+        Query query = em.createNativeQuery(q, Reply.class);
+        query.setParameter(1, id);
+
+        try {
+            return (Reply) query.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
