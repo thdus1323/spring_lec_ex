@@ -1,6 +1,5 @@
 package shop.mtcoding.blog._core.handler;
 
-import jakarta.persistence.NoResultException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

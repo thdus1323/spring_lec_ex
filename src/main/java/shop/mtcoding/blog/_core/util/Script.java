@@ -1,4 +1,4 @@
-package shop.mtcoding.blog._util;
+package shop.mtcoding.blog._core.util;
 
 public class Script {
 

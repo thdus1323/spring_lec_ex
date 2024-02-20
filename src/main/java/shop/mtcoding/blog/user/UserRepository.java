@@ -2,7 +2,6 @@ package shop.mtcoding.blog.user;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +39,21 @@ public class UserRepository {
         } catch (Exception e) {
             throw new RuntimeException("아이디 혹은 비밀번호를 찾을 수 없습니다.");
         }
+
+
     }
+}
+public User findByUsername(String username) {
+    Query query = em.createNativeQuery("select * from user_tb where username=? ", User.class);
+    query.setParameter(1, username);
+
+    try {
+        User user = (User) query.getSingleResult();
+        return user;
+    } catch (Exception e) {
+        throw new RuntimeException("아이디를 찾을 수 없습니다.");
+    }
+
+
+}
 }
